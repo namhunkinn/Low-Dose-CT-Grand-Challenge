@@ -1,7 +1,3 @@
-### README 작성 내용
-
----
-
 # **Low-Dose CT Grand Challenge: REDCNN and UNet with Attention Mechanisms**
 
 ## **Introduction**
