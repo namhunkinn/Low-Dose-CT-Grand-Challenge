@@ -1,79 +1,83 @@
-# **Low-Dose CT Grand Challenge: REDCNN and UNet with Attention Mechanisms**
+# **🌟 Low-Dose CT Grand Challenge: REDCNN and UNet with Attention Mechanisms**
 
-## **Introduction**
-This project aims to enhance **low-dose CT (LDCT)** images by denoising them into high-quality **normal-dose CT (NDCT)** images. The focus lies on improving diagnostic efficiency while minimizing radiation exposure.
+## **📌 Introduction**
+This project focuses on enhancing **low-dose CT (LDCT)** images into high-quality **normal-dose CT (NDCT)** images, improving diagnostic efficiency while minimizing radiation exposure.  
 
+### **Key Details**:
 - **Task**: Image Denoising  
 - **Models**:  
-  - **REDCNN**: Low-level feature-focused residual encoder-decoder CNN  
-  - **UNet**: Multi-level feature extraction and reconstruction network  
+  - **REDCNN**: Residual Encoder-Decoder CNN for low-level feature enhancement  
+  - **UNet**: Multi-level feature extraction with encoder-decoder architecture  
   - **Attention Mechanisms**:  
-    - **Channel Attention**  
-    - **Spatial Attention**  
+    - Channel Attention  
+    - Spatial Attention  
 
 ---
 
-## **Data Preprocessing**
+## **⚙️ Data Preprocessing**
 1. **Normalization**:
-   - Pixel values normalized from **(-1000, 2000)** to **(-1, 2)**.
+   - Pixel values scaled from **(-1000, 2000)** to **(-1, 2)**.  
 2. **Patch Division**:
-   - Original images of size **512×512** split into **81 patches** of **55×55**.
+   - Original images (**512×512**) divided into **81 patches** of size **55×55**.  
 3. **Cosine Similarity**:
-   - ResNet50 used for feature extraction; cosine similarity demonstrated high similarity (~0.996) between LDCT and NDCT patches.
+   - ResNet50 extracted features to compute cosine similarity (~**0.996**) between LDCT and NDCT patches, ensuring consistency.
 
 ---
 
-## **Models**
+## **🏗️ Models**
 
 ### **1. REDCNN**  
-- **Key Features**:
+- **Features**:
   - Fixed **channel size**: 96  
-  - Residual connections for **low-level feature enhancement** (e.g., edges and textures).  
-  - Feature maps maintain similar spatial resolution to the original input, prioritizing **low-level details**.  
+  - Residual connections for enhancing **low-level features** (e.g., edges, textures).  
+  - Maintains spatial resolution, focusing on detailed reconstruction.  
 
 - **Improvements**:
   - Batch Normalization  
   - Kaiming He Initialization  
-  - Incorporation of **VGG16 Loss** for perceptual enhancement.
+  - **VGG16 Loss**: Improves perceptual quality by focusing on image realism.  
+
+---
 
 ### **2. UNet**
-- **Key Features**:
-  - Encoder-decoder architecture with skip connections.  
-  - Progressive feature extraction from **low-level to high-level details**.  
-  - Spatial and channel dimensions dynamically adjusted.  
+- **Features**:
+  - Encoder-decoder architecture with skip connections for **multi-level feature learning**.  
+  - Dynamically adjusts spatial and channel dimensions.  
 
 - **Enhancements with Attention**:
-  - **Channel Attention** to amplify important channels.  
-  - **Spatial Attention** to emphasize critical spatial regions.
+  - **Channel Attention**: Amplifies key feature channels.  
+  - **Spatial Attention**: Highlights critical spatial regions for better feature localization.
 
 ---
 
-## **Evaluation Metrics**
-1. **RMSE**: Measures pixel-wise error magnitude. (Lower is better.)  
-2. **PSNR**: Quantifies signal-to-noise ratio. (Higher is better.)  
-3. **SSIM**: Evaluates structural similarity between images. (Closer to 1 is better.)  
+## **📊 Evaluation Metrics**
+| **Metric** | **Description** | **Goal** |
+|------------|-----------------|----------|
+| **RMSE**   | Measures pixel-wise error. | Lower is better. |
+| **PSNR**   | Quantifies signal-to-noise ratio. | Higher is better. |
+| **SSIM**   | Evaluates structural similarity. | Closer to 1 is better. |
 
 ---
 
-## **Experimental Results**
-- **Performance Comparison**:
-  - **Base Models**:
-    - REDCNN outperformed UNet on RMSE and SSIM metrics, reflecting its low-level feature specialization.  
-    - UNet excelled in PSNR, leveraging its ability to capture multi-level abstractions.
-  - **With Attention**:
-    - Attention mechanisms significantly enhanced performance for both REDCNN and UNet by refining feature importance.
+## **🔬 Experimental Results**
+### **Performance Summary**:
+- **Base Models**:
+  - **REDCNN**: Superior in **RMSE** and **SSIM**, excelling in low-level detail preservation.  
+  - **UNet**: Better **PSNR** performance, leveraging comprehensive multi-level abstractions.  
+- **With Attention Mechanisms**:
+  - Significant improvement observed in both REDCNN and UNet by enhancing feature importance through **Channel** and **Spatial Attention**.
 
 ---
 
-## **Conclusion**
-- REDCNN excels in **low-level feature extraction**, making it suitable for tasks prioritizing edges and textures.  
-- UNet is ideal for comprehensive feature learning, combining low and high-level details.  
-- **Channel and Spatial Attention** modules offer substantial improvements by selectively focusing on critical features.
+## **📌 Conclusion**
+- **REDCNN** is highly effective for **low-level feature tasks** (e.g., edge and texture preservation).  
+- **UNet** provides robust performance across **multi-level feature reconstruction** tasks.  
+- Integrating **Channel and Spatial Attention** mechanisms leads to substantial performance gains, refining both spatial and feature-level prioritization.
 
 ---
 
-### **References**
-1. Chen, H., et al. (2017). *Low-Dose CT with a Residual Encoder-Decoder Convolutional Neural Network (RED-CNN)*. IEEE Transactions on Medical Imaging.  
-2. Ronneberger, O., et al. (2015). *U-Net: Convolutional Networks for Biomedical Image Segmentation*. MICCAI.  
+## **📚 References**
+1. **Chen, H., et al.** (2017). *Low-Dose CT with a Residual Encoder-Decoder Convolutional Neural Network (RED-CNN)*. *IEEE Transactions on Medical Imaging*.  
+2. **Ronneberger, O., et al.** (2015). *U-Net: Convolutional Networks for Biomedical Image Segmentation*. *MICCAI*.  
 
-**GitHub Repository**: [Low-Dose CT Grand Challenge](https://github.com/ksouth0413/Low-Dose-CT-Grand-Challenge)  
+🔗 **GitHub Repository**: [Low-Dose CT Grand Challenge](https://github.com/ksouth0413/Low-Dose-CT-Grand-Challenge)
